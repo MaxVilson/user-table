@@ -30,7 +30,7 @@
             v-model="user.gender"
             :key="item"
             :value="item"
-            :name="`${gender}-${i}`"
+            :name="`${user.gender}-${i}`"
             >{{ item }}</b-form-radio
           >
         </b-td>
