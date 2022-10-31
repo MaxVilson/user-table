@@ -7,27 +7,27 @@
         }}</b-td>
       </b-tr>
     </b-thead>
-    <b-tbody>
+    <b-tbody v-for="(user, i) of users" :key="i">
       <b-tr>
         <b-td>
-          <b-form-input v-model.lazy="fullName"></b-form-input>
+          <b-form-input v-model.lazy="user.fullName"></b-form-input>
         </b-td>
         <b-td>
           <b-form-datepicker
-            v-model="dateOfBirth"
+            v-model="user.dateOfBirth"
             class="mb-2"
           ></b-form-datepicker>
         </b-td>
         <b-td>
           <b-form-select
-            v-model="favoriteBook"
+            v-model="user.favoriteBook"
             :options="$options.optionsBooks"
           ></b-form-select>
         </b-td>
         <b-td>
           <b-form-radio
             v-for="item of $options.genders"
-            v-model="gender"
+            v-model="user.gender"
             :key="item"
             :value="item"
             name="gender"
@@ -36,7 +36,7 @@
         </b-td>
         <b-td>
           <b-form-select
-            v-model="skills"
+            v-model="user.skills"
             :options="$options.optionsSkills"
             multiple
             :select-size="4"
@@ -77,12 +77,14 @@ const optionsBooks = Object.freeze([
 ]);
 const genders = Object.freeze(["Male", "Female"]);
 const optionsSkills = Object.freeze(["js", "vue", "html", "css"]);
+const rowsCount = 3;
 
 export default {
   headers,
   optionsBooks,
   genders,
   optionsSkills,
+  rowsCount,
 
   components: {
     BTableSimple,
@@ -98,11 +100,29 @@ export default {
 
   data() {
     return {
-      fullName: "",
-      dateOfBirth: "",
-      favoriteBook: "",
-      gender: "",
-      skills: [],
+      users: [
+        {
+          fullName: "",
+          dateOfBirth: "",
+          favoriteBook: "",
+          gender: "",
+          skills: [],
+        },
+        {
+          fullName: "",
+          dateOfBirth: "",
+          favoriteBook: "",
+          gender: "",
+          skills: [],
+        },
+        {
+          fullName: "",
+          dateOfBirth: "",
+          favoriteBook: "",
+          gender: "",
+          skills: [],
+        },
+      ],
     };
   },
 };
