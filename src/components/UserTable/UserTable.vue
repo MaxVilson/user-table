@@ -2,7 +2,7 @@
   <b-table-simple>
     <b-thead>
       <b-tr>
-        <b-td v-for="(header, i) of headers" :key="`${header}-${i}`">{{
+        <b-td v-for="(header, i) of $options.headers" :key="`${header}-${i}`">{{
           header
         }}</b-td>
       </b-tr>
@@ -21,12 +21,12 @@
         <b-td>
           <b-form-select
             v-model="favoriteBook"
-            :options="optionsBooks"
+            :options="$options.optionsBooks"
           ></b-form-select>
         </b-td>
         <b-td>
           <b-form-radio
-            v-for="item of genders"
+            v-for="item of $options.genders"
             v-model="gender"
             :key="item"
             :value="item"
@@ -37,7 +37,7 @@
         <b-td>
           <b-form-select
             v-model="skills"
-            :options="optionsSkills"
+            :options="$options.optionsSkills"
             multiple
             :select-size="4"
           ></b-form-select>
@@ -60,7 +60,30 @@ import {
   BFormRadio,
 } from "bootstrap-vue";
 
+const headers = [
+  "Фамилия И.О.",
+  "Дата рождения",
+  "Любимая книга",
+  "Пол",
+  "Навыки",
+];
+const optionsBooks = [
+  { value: "antikhrupkost", text: "Антихрупкость" },
+  {
+    value: "fenix",
+    text: "Проект «Феникс». Роман о том, как DevOps меняет бизнес к лучшему",
+  },
+  { value: "1984", text: "1984" },
+];
+const genders = ["Male", "Female"];
+const optionsSkills = ["js", "vue", "html", "css"];
+
 export default {
+  headers,
+  optionsBooks,
+  genders,
+  optionsSkills,
+
   components: {
     BTableSimple,
     BThead,
@@ -75,24 +98,6 @@ export default {
 
   data() {
     return {
-      headers: [
-        "Фамилия И.О.",
-        "Дата рождения",
-        "Любимая книга",
-        "Пол",
-        "Навыки",
-      ],
-      optionsBooks: [
-        { value: "antikhrupkost", text: "Антихрупкость" },
-        {
-          value: "fenix",
-          text: "Проект «Феникс». Роман о том, как DevOps меняет бизнес к лучшему",
-        },
-        { value: "1984", text: "1984" },
-      ],
-      genders: ["Male", "Female"],
-      optionsSkills: ["js", "vue", "html", "css"],
-
       fullName: "",
       dateOfBirth: "",
       favoriteBook: "",
