@@ -7,8 +7,8 @@
         }}</b-td>
       </b-tr>
     </b-thead>
-    <b-tbody v-for="(user, i) of users" :key="i">
-      <b-tr>
+    <b-tbody>
+      <b-tr v-for="(user, i) of users" :key="i">
         <b-td>
           <b-form-input v-model.lazy="user.fullName"></b-form-input>
         </b-td>
