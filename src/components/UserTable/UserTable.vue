@@ -60,23 +60,23 @@ import {
   BFormRadio,
 } from "bootstrap-vue";
 
-const headers = [
+const headers = Object.freeze([
   "Фамилия И.О.",
   "Дата рождения",
   "Любимая книга",
   "Пол",
   "Навыки",
-];
-const optionsBooks = [
+]);
+const optionsBooks = Object.freeze([
   { value: "antikhrupkost", text: "Антихрупкость" },
   {
     value: "fenix",
     text: "Проект «Феникс». Роман о том, как DevOps меняет бизнес к лучшему",
   },
   { value: "1984", text: "1984" },
-];
-const genders = ["Male", "Female"];
-const optionsSkills = ["js", "vue", "html", "css"];
+]);
+const genders = Object.freeze(["Male", "Female"]);
+const optionsSkills = Object.freeze(["js", "vue", "html", "css"]);
 
 export default {
   headers,
